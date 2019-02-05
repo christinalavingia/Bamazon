@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
     database = "bamazon"
 });
 
-connection.connect(function(err) {
+connection.connect(function (err) {
     if (err) throw err;
     start();
 });
@@ -21,13 +21,13 @@ function start() {
         type: "confirm",
         message: "Welcome to Bamazon! Would you like to view our inventory?",
         default: true
-}]).then(function(user) {
-    if (user.confirm === true) {
-        inventory();
-    } else {
-        console.log("Thanks for stopping by!");
-    }
-});
+    }]).then(function (answer) {
+        if (answer.confirm === true) {
+            inventory();
+        } else {
+            console.log("Thanks for stopping by!");
+        }
+    });
 
 }
 
@@ -39,22 +39,37 @@ function inventory() {
 
     listItems();
 
-function listItems();
-    connection.query("SELECT * FROM products", function(err, res) {
+    function listItems();
+    connection.query("SELECT * FROM products", function (err, res) {
         for (var i = 0; i < res.length; i++) {
             var itemId = res[i].item_id,
-            productName = res[i].product_name,
-            departmentName = res[i].department_name,
-            price = res[i].price,
-            stock = res[i].stock_quantity;
+                productName = res[i].product_name,
+                departmentName = res[i].department_name,
+                price = res[i].price,
+                stock = res[i].stock_quantity;
 
-        table.push(
-            [itemId, productName, departmentName, price, stock]
-        );
-    }
-
-});
-
+            table.push(
+                [itemId, productName, departmentName, price, stock]
+            );
+        }
+        console.log("-------- Current Inventory --------")
+        console.log(table.toString());
+        continuePrompt();
+    });
 
 }
 
+function continuePrompt() {
+    inquirer.prompt([{
+        name: "continue",
+        type: "confirm",
+        message: "Would you like to purchase an item?",
+        default: true
+    }]).then(function(answer) {
+        if (user.continue == true) {
+            selectionPrompt();
+        } else {
+            console.log("Thank you, come back soon!");
+        }
+    })
+}
