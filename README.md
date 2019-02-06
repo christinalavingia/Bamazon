@@ -1,6 +1,6 @@
 # Bamazon
 
-## Demo Video: https://drive.google.com/file/d/16hkst_bycfcWHF8go2qPPDAFWKr1xQAg/view
+### Demo Video: https://drive.google.com/file/d/16hkst_bycfcWHF8go2qPPDAFWKr1xQAg/view
 
 ## Objective
 
@@ -34,17 +34,19 @@ When using the Bamazon Customer Manager, users will encounter the following prom
   1. The user has the option of typing in Y for Yes or n for No
     1. If Yes, they see the prompt: "Your order is complete, thank you!"
     2. If No, they see the prompt: "Thanks for stopping by!"
-  
-Due to the use of MySql for database storage, the stock quantity of a given item should decrease to reflect the number of items purchased the next time the user views available inventory.  
 
 
  ## Technology
  
  This app relies on the following NPM Packages:
- * MySql: Database management
+ * MySQL: Database management
  * Inquirer: Prompts with user input
  * Cli-Table: Inventory display
  * Node
  * JavaScript
+ 
+Due to the use of MySQL for database storage, the stock quantity of a given item should decrease to reflect the number of items purchased the next time the user views available inventory.  
+ 
+ Before the user interacts with the application, the inventory information is already stored in MySQL. I used real inventory names and prices from Amazon to give my application a more realistic feel.
  
  
