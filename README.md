@@ -10,11 +10,11 @@ When using the Bamazon Customer Manager, users will encounter the following prom
 
 1. Welcome to Bamazon! Would you like to view our inventory?
     * The user has the option of typing in Y for Yes or n for No
-    * If Yes, the prompts continue and the Cli-Table is invoked to present the item ID, item name, department, price and stock quantity.
-    * If n, they see this console message "Thanks for stopping by!" and the NodeJs application starts again with prompt 1.
+       * If Yes, the prompts continue and the Cli-Table is invoked to present the item ID, item name, department, price and stock quantity.
+       * If n, they see this console message "Thanks for stopping by!" and the NodeJs application starts again with prompt 1.
 2. Would you like to purchase an item?
     * The user has the option of typing in Y for Yes or n for No
-    * If Yes, the prompts continue; if n they see this console message "Thank you, come back soon!" and the NodeJS application starts again with prompt 1.
+      * If Yes, the prompts continue; if n they see this console message "Thank you, come back soon!" and the NodeJS application starts again with prompt 1.
 3. Please enter the ID of the item you'd like to purchase.
     * Accepts a numeric value between 1 and 10.
 4. How many units would you like to purchase?
@@ -32,8 +32,8 @@ When using the Bamazon Customer Manager, users will encounter the following prom
         Total: Price X Quantity
 5. Please confirm your order.
    * The user has the option of typing in Y for Yes or n for No
-   * If Yes, they see the prompt: "Your order is complete, thank you!"
-   * If No, they see the prompt: "Thanks for stopping by!"
+      * If Yes, they see the prompt: "Your order is complete, thank you!"
+      * If No, they see the prompt: "Thanks for stopping by!"
 
 
  ## Technology
