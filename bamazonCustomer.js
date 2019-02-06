@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "65362Cnl!m",
-    database = "bamazon"
+    database: "bamazon"
 });
 
 connection.connect(function (err) {
@@ -38,7 +38,7 @@ function inventory() {
     });
     displayItems();
 
-    function displayItems();
+    function displayItems() {
     connection.query("SELECT * FROM products", function (err, res) {
         for (var i = 0; i < res.length; i++) {
             var itemId = res[i].item_id,
@@ -55,6 +55,8 @@ function inventory() {
         console.log(table.toString());
         continuePrompt();
     });
+
+}
 
 }
 
