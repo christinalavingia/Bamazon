@@ -26,6 +26,7 @@ function start() {
             inventory();
         } else {
             console.log("Thanks for stopping by!");
+            start();
         }
     });
 
@@ -71,6 +72,7 @@ function continuePrompt() {
             selection();
         } else {
             console.log("Thank you, come back soon!");
+            start();
         }
     })
 }
