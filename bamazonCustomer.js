@@ -36,16 +36,14 @@ function inventory() {
     var table = new Table({
         head: ["ID", "Item", "Department", "Price", "Stock"],
         colWidths: [10, 40, 30, 30, 30]
-    });
-    displayItems();
+    })
 
-    function displayItems() {
     connection.query("SELECT * FROM products", function (err, res) {
         for (var i = 0; i < res.length; i++) {
             var itemId = res[i].item_id,
                 productName = res[i].product_name,
                 departmentName = res[i].department_name,
-                price = res[i].price,
+                price = "$" + res[i].price,
                 stock = res[i].stock_quantity;
 
             table.push(
@@ -56,8 +54,6 @@ function inventory() {
         console.log(table.toString());
         continuePrompt();
     });
-
-}
 
 }
 
@@ -82,7 +78,19 @@ function selection() {
         name: "input_Id",
         type: "input",
         message: "Please enter the ID of the item you'd like to purchase.",
-    }, {
+    }]).then(function (answer) {
+        if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(answer.input_Id)) {
+            units();
+        } else {
+            console.log("Please enter an available item ID.");
+            selection();
+        }
+    });
+
+}
+
+function units() {
+    inquirer.prompt([{
         name: "units",
         type: "input",
         message: "How many units would you like to purchase?"
