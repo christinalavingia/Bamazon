@@ -81,8 +81,8 @@ function selection() {
         type: "input",
         message: "Please enter the ID of the item you'd like to purchase.",
     }]).then(function (answer) {
-        if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(answer.input_Id)) {
-            units();
+        if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(answer.input_Id)) {
+            units(answer.input_Id);
         } else {
             console.log("Please enter an available item ID.");
             selection();
@@ -91,19 +91,19 @@ function selection() {
 
 }
 
-function units() {
+function units(quantity) {
     inquirer.prompt([{
         name: "units",
         type: "input",
         message: "How many units would you like to purchase?"
     }]).then(function (answer) {
-        connection.query("SELECT * FROM products WHERE item_id = ?", answer.input_Id, function (err, res) {
+        connection.query("SELECT * FROM products WHERE item_id = ?", quantity, function (err, res) {
             for (var i = 0; i < res.length; i++) {
                 if (answer.units > res[i].stock_quantity) {
                     console.log("Sorry! We don't have enough in stock. Please enter a different amount or try again later.");
                     start();
                 } else {
-                    console.log("Your order will be fulfilled.\nYou've selected: \nItem: " + res[i].product_name + "\nDepartment: " + res[i].department_name + "\nPrice: " + res[i].price + "\nQuantity: " + answer.units + "\nTotal: $" + res[i].price * answer.units);
+                    console.log("Your order will be fulfilled.\nYou've selected: \nItem: " + res[i].product_name + "\nDepartment: " + res[i].department_name + "\nPrice: $" + res[i].price + "\nQuantity: " + answer.units + "\nTotal: $" + res[i].price * answer.units);
 
                     var newStock = (res[i].stock_quantity - answer.units);
                     var product = answer.input_Id;
